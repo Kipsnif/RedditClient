@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import Sub from "./Sub";
+import { selectSubs } from "./subsSlice";
 
 
 export default function Subs() {
+    const subs = useSelector(selectSubs);
 
     return (
         <div>
