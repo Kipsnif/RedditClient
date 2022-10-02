@@ -17,10 +17,10 @@ const subsSlice = createSlice({
         },
         removeSub(state, action) {
             const stateArr = Object.entries(state.subs);
-            state.subs = stateArr.filter(function ([key, value]) {
-                return value !== action.value;
+            const filtered = stateArr.filter(function ([key, value]) {
+                return key !== action.payload;
             })
-
+            state.subs = Object.fromEntries(filtered);
         }
     }
 })

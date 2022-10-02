@@ -7,21 +7,24 @@ export default function Sub() {
     const subs = useSelector(selectSubs);
     const dispatch = useDispatch();
 
+
     const handleClick = (e) => {
-        const targetValue = e.target.value
+        e.preventDefault();
+
+        const id = e.target.id;
 
         dispatch(
-            removeSub(targetValue)
+            removeSub(id)
         )
     }
 
     return (
         <div>
             <ul className="subList">
-                {Object.values(subs).map((sub) => (
+                {Object.entries(subs).map(([key, sub]) => (
                     <div className="subList">
-                        <li>{sub}</li>
-                        <p onClick={handleClick}>-</p>
+                        <li >{sub}</li>
+                        <button id={key} typeof="button" onClick={handleClick}>-</button>
                     </div>
 
                 ))}
